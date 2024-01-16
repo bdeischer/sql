@@ -1,10 +1,10 @@
--- Duplicate records 
+-- Identifying duplicate records 
 select column1, column2, column3, count(*)
 from table1
 group by column1, column2, column3
 having count(*) > 1;
 
--- Duplicate records, only column1 duplicate
+-- Identifying duplicate records, only 1 column duplicated
 select column1, column2, column3, count(*)
 from table1
 group by column1, column2, column3
