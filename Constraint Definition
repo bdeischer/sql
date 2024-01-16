@@ -1,5 +1,5 @@
 -- List the constraint definition (table/column) using contraint name as input
--- Change CONSTRAINT_NAME'
+-- Change 'CONSTRAINT_NAME'
 
 select a.table_name, 
        a. column_name, 
