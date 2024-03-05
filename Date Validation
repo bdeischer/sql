@@ -1,0 +1,19 @@
+-- Stored procedure for date validation
+--   returns 0 for an invalid date
+
+create or replace function is_date (
+  p_str IN VARCHAR2,
+  format_picture in varchar2
+  ) RETURN NUMBER
+is
+  l_dateval date;
+begin
+   l_dateval := to_date(p_str, format_picture);
+   RETURN 1;
+EXCEPTION
+   WHEN OTHERS
+   THEN
+     return 0;
+end is_date;
+/
+
