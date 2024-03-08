@@ -1,6 +1,7 @@
 -- This script creates a count of members by state
--- Replace YYYY with the year
 --  disclaimer - if a member has more than 1 address record in different states, that member is counted more than once
+
+exec :v_year :='2023';
 
 select state, count(*) from 
 (
@@ -9,9 +10,9 @@ from amiown.member_span ms
 inner join amiown.address a
 on trim(addrtype_who) = 'D   S ' || substr(member_nbr,1,9)
 and a.void = ' '
-and YYYY between substr(a.ymdeff,1,4) and substr(a.ymdend,1,4)
+and :v_year between substr(a.ymdeff,1,4) and substr(a.ymdend,1,4)
 where ms.void = ' '
-  and YYYY between substr(ms.ymdeff,1,4) and substr(ms.ymdend,1,4)
+  and :v_year between substr(ms.ymdeff,1,4) and substr(ms.ymdend,1,4)
 ) a 
 group by state
 order by 1
