@@ -1,7 +1,8 @@
 --  This query produces a count of active members.
---  Replace YYYY with the year
+
+exec :v_year :='2023';
 
 select count(distinct member_nbr)
 from member_span ms
-where 'YYYY' between substr(ymdeff,1,4) and substr(ymdend,1,4)
+where :v_year between substr(ymdeff,1,4) and substr(ymdend,1,4)
 and void = ' ';
