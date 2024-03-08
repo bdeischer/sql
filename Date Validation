@@ -17,3 +17,6 @@ EXCEPTION
 end is_date;
 /
 
+example:
+select is_date('20240101','yyyymmdd') from dual;
+
