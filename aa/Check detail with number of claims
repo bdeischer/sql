@@ -1,5 +1,7 @@
 -- list check detail including number of claims per check
--- change yyyymmdd to check dates
+
+exec :v_begin := '20230101';
+exec :v_end := '20231231';
 
 select * from 
 (
@@ -29,7 +31,7 @@ select * from
   on sa.serv_nbr = s.serv_nbr
   left outer join eop_negbal nb
   on sa.payable2 = nb.payable_nbr
-  where cx.ymdpaid between yyyymmdd and yyyymmdd
+  where cx.ymdpaid between :v_begin and :v_end
   group by cx.bank_check_nbr,
            cx.ymdpaid
   order by 1
