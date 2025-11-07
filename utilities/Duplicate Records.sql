@@ -1,0 +1,22 @@
+-- Identifying duplicate records 
+select column1, column2, column3, count(*)
+from table1
+group by column1, column2, column3
+having count(*) > 1;
+
+-- Identifying duplicate records, only 1 column duplicated
+select column1, column2, column3, count(*)
+from table1
+group by column1, column2, column3
+having count(column1) > 1;
+
+-- Deleting Duplicate records and keeping lowest record with lowest rowid
+delete from table1
+  where rowid not in 
+  (
+    select min(rowid) 
+      from table1
+      group by column1, column2, column3
+  )
+;
+
