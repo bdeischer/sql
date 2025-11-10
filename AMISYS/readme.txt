@@ -1,5 +1,6 @@
 The files in this directory are prefixed by the main area for the query.
 
-ADD - Address
-MEM - Member
-PRV - Provider
+Add - Address
+Clm - Claim
+Mem - Member
+Prv - Provider
