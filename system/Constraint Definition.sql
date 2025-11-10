@@ -1,4 +1,4 @@
--- List the constraint definition (table/column) using contraint name as input
+-- List the constraint definition (table/column) using constraint name as input
 -- Change 'CONSTRAINT_NAME'
 
 select a.table_name, 
