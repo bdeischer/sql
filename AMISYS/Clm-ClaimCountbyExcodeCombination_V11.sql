@@ -18,6 +18,7 @@ as
      inner join amiown.explain_code ec1
      on ec1.explain_x in(substr(ph.free_form_data,16,4), substr(ph.free_form_data,20,4), substr(ph.free_form_data,24,4), substr(ph.free_form_data,28,4),substr(ph.free_form_data,32,4),substr(ph.free_form_data,36,4))
      and ec1.serv_pay_status = 'PEND'
+     and substr(ph.op_nbr,1,3) <> 'SYS' and substr(ph.op_nbr,1,1)<> 'X' 
    union  
    select distinct substr(ph.record_key,3,12) claim_nbr , ec2.explain_x exc, ec2.description cdesc
      from amiown.process_hist ph
@@ -28,6 +29,7 @@ as
      inner join amiown.explain_code ec2
      on ec2.explain_x in(substr(ph.free_form_data,16,4), substr(ph.free_form_data,20,4), substr(ph.free_form_data,24,4), substr(ph.free_form_data,28,4),substr(ph.free_form_data,32,4),substr(ph.free_form_data,36,4))
      and ec2.serv_pay_status = 'PEND'
+     and substr(ph.op_nbr,1,3) <> 'SYS' and substr(ph.op_nbr,1,1)<> 'X' 
    union  
    select distinct substr(ph.record_key,3,12) claim_nbr , ec3.explain_x exc, ec3.description cdesc
      from amiown.process_hist ph
@@ -38,7 +40,7 @@ as
      inner join amiown.explain_code ec3
      on ec3.explain_x in(substr(ph.free_form_data,16,4), substr(ph.free_form_data,20,4), substr(ph.free_form_data,24,4), substr(ph.free_form_data,28,4),substr(ph.free_form_data,32,4),substr(ph.free_form_data,36,4))
      and ec3.serv_pay_status = 'PEND'
---     and rownum < 10     
+     and substr(ph.op_nbr,1,3) <> 'SYS' and substr(ph.op_nbr,1,1)<> 'X' 
    union  
    select distinct substr(ph.record_key,3,12) claim_nbr , ec4.explain_x exc, ec4.description cdesc
      from amiown.process_hist ph
@@ -49,6 +51,7 @@ as
      inner join amiown.explain_code ec4
      on ec4.explain_x in(substr(ph.free_form_data,16,4), substr(ph.free_form_data,20,4), substr(ph.free_form_data,24,4), substr(ph.free_form_data,28,4),substr(ph.free_form_data,32,4),substr(ph.free_form_data,36,4))
      and ec4.serv_pay_status = 'PEND'
+     and substr(ph.op_nbr,1,3) <> 'SYS' and substr(ph.op_nbr,1,1)<> 'X' 
    union  
    select distinct substr(ph.record_key,3,12) claim_nbr , ec5.explain_x exc, ec5.description cdesc
      from amiown.process_hist ph
@@ -59,6 +62,7 @@ as
      inner join amiown.explain_code ec5
      on ec5.explain_x in(substr(ph.free_form_data,16,4), substr(ph.free_form_data,20,4), substr(ph.free_form_data,24,4), substr(ph.free_form_data,28,4),substr(ph.free_form_data,32,4),substr(ph.free_form_data,36,4))
      and ec5.serv_pay_status = 'PEND'
+     and substr(ph.op_nbr,1,3) <> 'SYS' and substr(ph.op_nbr,1,1)<> 'X' 
    union  
    select distinct substr(ph.record_key,3,12) claim_nbr , ec6.explain_x exc, ec6.description cdesc
      from amiown.process_hist ph
@@ -69,6 +73,7 @@ as
      inner join amiown.explain_code ec6
      on ec6.explain_x in(substr(ph.free_form_data,16,4), substr(ph.free_form_data,20,4), substr(ph.free_form_data,24,4), substr(ph.free_form_data,28,4),substr(ph.free_form_data,32,4),substr(ph.free_form_data,36,4))
      and ec6.serv_pay_status = 'PEND'
+     and substr(ph.op_nbr,1,3) <> 'SYS' and substr(ph.op_nbr,1,1)<> 'X' 
 )
 select distinct
        claim_nbr,
