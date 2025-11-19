@@ -1,5 +1,8 @@
-var pymdpaid number;
-exec :pymdpaid := 20251101;
+var begin_ymdpaid number;
+var end_ymdpaid number;
+
+exec :begin_ymdpaid := 20251101;
+exec :end_ymdpaid := 20251130;
 
 select b.explain_codes, 
        b.explain_code_desc,
@@ -15,7 +18,7 @@ as
      inner join amiown.service_x sx
      on substr(ph.record_key,3,16) = sx.serv_nbr
      and substr(sx.serv_nbr,13,4) = '0100'
-     and sx.ymdpaid > :pymdpaid
+     and sx.ymdpaid between :begin_ymdpaid and :end_ymdpaid
      inner join amiown.code_detail cd1
      on cd1.code_nbr in (cast('EX' || substr(ph.free_form_data,16,2) as char(04)),
                          cast('EX' || substr(ph.free_form_data,18,2) as char(04)), 
@@ -31,7 +34,7 @@ as
      inner join amiown.service_x sx2
      on substr(ph.record_key,3,16) = sx2.serv_nbr
      and substr(sx2.serv_nbr,13,4) = '0100'
-     and sx2.ymdpaid > :pymdpaid
+     and sx2.ymdpaid between :begin_ymdpaid and :end_ymdpaid
      inner join amiown.code_detail cd2
      on cd2.code_nbr in (cast('EX' || substr(ph.free_form_data,16,2) as char(04)),
                          cast('EX' || substr(ph.free_form_data,18,2) as char(04)), 
@@ -47,7 +50,7 @@ as
      inner join amiown.service_x sx3 
      on substr(ph.record_key,3,16) = sx3.serv_nbr
      and substr(sx3.serv_nbr,13,4) = '0100'
-     and sx3.ymdpaid > :pymdpaid
+     and sx3.ymdpaid between :begin_ymdpaid and :end_ymdpaid
      inner join amiown.code_detail cd3
      on cd3.code_nbr in (cast('EX' || substr(ph.free_form_data,16,2) as char(04)),
                          cast('EX' || substr(ph.free_form_data,18,2) as char(04)), 
@@ -63,7 +66,7 @@ as
      inner join amiown.service_x sx4
      on substr(ph.record_key,3,16) = sx4.serv_nbr
      and substr(sx4.serv_nbr,13,4) = '0100'
-     and sx4.ymdpaid > :pymdpaid
+     and sx4.ymdpaid between :begin_ymdpaid and :end_ymdpaid
      inner join amiown.code_detail cd4
      on cd4.code_nbr in (cast('EX' || substr(ph.free_form_data,16,2) as char(04)),
                          cast('EX' || substr(ph.free_form_data,18,2) as char(04)), 
@@ -79,7 +82,7 @@ as
      inner join amiown.service_x sx5
      on substr(ph.record_key,3,16) = sx5.serv_nbr
      and substr(sx5.serv_nbr,13,4) = '0100'
-     and sx5.ymdpaid > :pymdpaid
+     and sx5.ymdpaid between :begin_ymdpaid and :end_ymdpaid
      inner join amiown.code_detail cd5
      on cd5.code_nbr in (cast('EX' || substr(ph.free_form_data,16,2) as char(04)),
                          cast('EX' || substr(ph.free_form_data,18,2) as char(04)), 
@@ -95,7 +98,7 @@ as
      inner join amiown.service_x sx6
      on substr(ph.record_key,3,16) = sx6.serv_nbr
      and substr(sx6.serv_nbr,13,4) = '0100'
-     and sx6.ymdpaid > :pymdpaid
+     and sx6.ymdpaid between :begin_ymdpaid and :end_ymdpaid
      inner join amiown.code_detail cd6
      on cd6.code_nbr in (cast('EX' || substr(ph.free_form_data,16,2) as char(04)),
                          cast('EX' || substr(ph.free_form_data,18,2) as char(04)), 
@@ -115,3 +118,5 @@ group by a.claim_nbr
 ) b
 group by explain_codes, explain_code_desc
 ;
+
+ 
